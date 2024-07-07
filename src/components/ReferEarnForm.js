@@ -18,11 +18,12 @@ const ReferralForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL; 
       console.log("process.env.REACT_APP_BACKEND_URL")
       console.log(process.env.REACT_APP_BACKEND_URL)
       console.log("process.env.REACT_APP_BACKEND_URL")
       
-      const response = await axios.post(process.env.REACT_APP_BACKEND_URL, formData);
+      const response = await axios.post(`${backendUrl}/api/referrals`, formData);
       console.log(formData);
       if (response.status === 201) {
         console.log("success");
